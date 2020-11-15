@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  # BACK END API
+  smart-brain-api:
+    container_name: backend
+    build: ./
+    command: yarn start
+    working_dir: /usr/src/smart-brain-api
+    environment:
+      POSTGRES_USER: sally
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: db
+    links:
+      - db # the name of my postgres service below
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./:/usr/src/smart-brain-api
+
+  # POSTGRES service
+  db:
+    build: ./postgres
+    environment:
+      POSTGRES_USER: sally
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    ports:
+      - "5432:5432"
