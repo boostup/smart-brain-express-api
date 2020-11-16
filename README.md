@@ -2,6 +2,8 @@
 
 Final project for ZTM course
 
+It is the backend repository for the React App [Smart Brain](https://github.com/boostup/smart-brain-react-app)
+
 1. You must add your own API key in the `controllers/image.js` file to connect to Clarifai API
 2. Add your own database credentials to `server.js`
 
